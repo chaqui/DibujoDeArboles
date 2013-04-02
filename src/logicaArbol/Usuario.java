@@ -9,5 +9,6 @@ package logicaArbol;
  * @author chaqui
  */
 public class Usuario {
-    
+    private int clave, claveAux;
+    private String nombre;
 }

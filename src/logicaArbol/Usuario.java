@@ -12,6 +12,11 @@ public class Usuario {
     private int clave, claveAux;
     private String nombre;
 
+    public Usuario(int clave, String nombre) {
+        this.clave = clave;
+        this.nombre = nombre;
+    }
+
     public int getClave() {
         return clave;
     }

@@ -6,6 +6,10 @@ package graficadearboles;
 
 import java.awt.Graphics;
 import javax.swing.JOptionPane;
+import logicaArbol.Arbol;
+import logicaArbol.Usuario;
+import java.util.LinkedList;
+
 
 /**
  *
@@ -13,8 +17,11 @@ import javax.swing.JOptionPane;
  * A Dios sea la Gloria
  */
 public class InterfazArboles extends javax.swing.JFrame {
-   
-
+   Arbol arbol = new Arbol();
+   private Boolean bandera1;
+   private Monticulo mont = new Monticulo(); 
+   LinkedList datos;
+   Boolean bp1=true;
     /**
      * Creates new form jMonticulos
      */
@@ -30,16 +37,10 @@ public class InterfazArboles extends javax.swing.JFrame {
 
         jNombre = new javax.swing.JTextField();
         jClave = new javax.swing.JTextField();
-        JTelefono1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         BtIngresar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jClaveS = new javax.swing.JTextField();
-        jNombreS = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        JTelefonoS = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         BtEliminar = new javax.swing.JButton();
         jNodo = new javax.swing.JLabel();
@@ -89,8 +90,6 @@ public class InterfazArboles extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
-        jLabel2.setText("Telefono:");
-
         jLabel3.setText("Clave:");
 
         BtIngresar.setText("Ingresar");
@@ -99,16 +98,6 @@ public class InterfazArboles extends javax.swing.JFrame {
                 BtIngresarActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("Telefono:");
-
-        jClaveS.setEnabled(false);
-
-        jNombreS.setEnabled(false);
-
-        jLabel5.setText("Nombre:");
-
-        JTelefonoS.setEnabled(false);
 
         jLabel6.setText("Clave:");
 
@@ -502,13 +491,10 @@ public class InterfazArboles extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(JTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jNodo15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -605,33 +591,23 @@ public class InterfazArboles extends javax.swing.JFrame {
                         .addComponent(jClave, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(BtIngresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jNodo24)
                                 .addGap(531, 531, 531))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jNodo10)
-                                    .addComponent(jLabel6))
+                                .addComponent(jNodo10)
+                                .addGap(726, 726, 726))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jClaveS, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(632, 632, 632))))))
+                                .addContainerGap())))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jNodo7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(79, 79, 79)
+                .addComponent(jNodo7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -654,27 +630,18 @@ public class InterfazArboles extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(BtEliminar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jClaveS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
+                            .addComponent(BtEliminar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jClaveS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(BtIngresar))
+                        .addComponent(BtIngresar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -777,7 +744,27 @@ public class InterfazArboles extends javax.swing.JFrame {
    }
    //Metodo para ingresat Informacion
     private void BtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtIngresarActionPerformed
-
+       int clave;
+       String nombre;
+        try{
+        clave = Integer.parseInt(this.jClave.getText());
+        nombre=this.jNombre.getText();
+       }
+       catch(Exception E){
+          JOptionPane.showMessageDialog(null, "Un dato mal ingresado ", "Error", JOptionPane.INFORMATION_MESSAGE); 
+          return;
+       }
+       try{
+           Usuario us = new Usuario(clave,nombre);
+           arbol.insertar(us);
+           datos =arbol.Info();
+           if (datos!=null) {
+               repaint();
+           }
+       }
+       catch(Exception E){
+           JOptionPane.showMessageDialog(null, "Error al ingresar ", "Error", JOptionPane.INFORMATION_MESSAGE);
+       }
      
     }//GEN-LAST:event_BtIngresarActionPerformed
     //Metodo para eliminar informacion
@@ -788,6 +775,7 @@ public class InterfazArboles extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        repaint();
     }//GEN-LAST:event_formWindowOpened
 
     private void jNodo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNodo2MouseClicked
@@ -1223,8 +1211,50 @@ public class InterfazArboles extends javax.swing.JFrame {
     }
     @Override
     public void paint(Graphics g)
-    {
-         
+     {
+        super.paint(g);
+        int x,y,width,height,x1,y1,padre,b;
+        width=30;
+        height=30;
+        if (bp1) {
+            System.out.println("bp1");
+            x= this.listaLabels[0].getX()-7;
+            y=this.listaLabels[0].getY()+15;
+            g.drawArc(x, y, width, height, 0, 360);
+            this.bp1=false;
+        }
+        else{
+            if (bp2) {
+                //Dbujar arcos
+                System.out.println("bp2");
+                for (int i = 0; i < this.mont.getSize()+1; i++) {
+                    x= this.listaLabels[i].getX()-7;
+                    y=this.listaLabels[i].getY()+15;
+
+                    g.drawArc(x, y, width, height, 0, 360);
+                
+                //Dibujar lineas
+                    padre = this.mont.Padre(i);
+                    if (padre>=0) {
+                        x=this.listaLabels[padre].getX()+10;
+                        y=this.listaLabels[padre].getY()+45;
+                    }
+                        b=i%2;
+                        System.out.println("b: "+String.valueOf(b));
+                    if (b==0) {
+                        x1=this.listaLabels[i].getX()-8;
+                        y1=this.listaLabels[i].getY()+30;
+                        g.drawLine(x, y, x1, y1);
+                    }
+                    else{
+                         x1=this.listaLabels[i].getX()+20;
+                        y1=this.listaLabels[i].getY()+30;
+                        g.drawLine(x, y, x1, y1);
+                    }
+
+                }
+            }
+        }          
     }
            
     public static void main(String args[]) {
@@ -1261,16 +1291,11 @@ public class InterfazArboles extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtEliminar;
     private javax.swing.JButton BtIngresar;
-    private javax.swing.JTextField JTelefono1;
-    private javax.swing.JTextField JTelefonoS;
     private javax.swing.JTextField jClave;
     private javax.swing.JLabel jClaveR;
     private javax.swing.JTextField jClaveS;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelClaveN;
     private javax.swing.JLabel jLabelNomN;
@@ -1308,7 +1333,6 @@ public class InterfazArboles extends javax.swing.JFrame {
     private javax.swing.JLabel jNodo9;
     private javax.swing.JTextField jNombre;
     private javax.swing.JLabel jNombreR;
-    private javax.swing.JTextField jNombreS;
     private javax.swing.JLabel jTelefonoR;
     // End of variables declaration//GEN-END:variables
 }

@@ -153,7 +153,7 @@ public class Nodo {
             else if(valorinsertar.getClave()>dato.getClave())
                  {
                      if (this.nodoHIjoDer==null) {
-                         int a= this.dato.getClaveAux()*2+1;
+                         int a= this.dato.getClaveAux()*2+2;
                            valorinsertar.setClaveAux(a);
                          this.nodoHIjoDer= new Nodo(valorinsertar,nPadre);
                      }
@@ -164,5 +164,3 @@ public class Nodo {
                  }        
         }
     }
-
-

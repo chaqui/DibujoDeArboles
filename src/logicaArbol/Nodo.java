@@ -135,11 +135,13 @@ public class Nodo {
     }
       public void insertar(Usuario valorinsertar)
     {
+        System.out.println("insertar nodo");
         Nodo nPadre= new Nodo(this.getDato(),this.getNodoPadre());
         //insertar datos lado izquierdo
         if (valorinsertar.getClave()<dato.getClave()) {
             if (this.nodoHijoIzq==null) {
                 int a= this.dato.getClaveAux()*2+1;
+                System.out.println("a: "+a);
                 valorinsertar.setClaveAux(a);
                
                this.nodoHijoIzq= new Nodo(valorinsertar,nPadre);
@@ -154,6 +156,7 @@ public class Nodo {
                  {
                      if (this.nodoHIjoDer==null) {
                          int a= this.dato.getClaveAux()*2+2;
+                         System.out.println("a: "+a);
                            valorinsertar.setClaveAux(a);
                          this.nodoHIjoDer= new Nodo(valorinsertar,nPadre);
                      }

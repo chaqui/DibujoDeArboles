@@ -8,7 +8,6 @@ import java.awt.Graphics;
 import javax.swing.JOptionPane;
 import logicaArbol.Arbol;
 import logicaArbol.Usuario;
-import java.util.LinkedList;
 
 
 /**
@@ -20,8 +19,9 @@ public class InterfazArboles extends javax.swing.JFrame {
    Arbol arbol = new Arbol();
    private Boolean bandera1;
    private Monticulo mont = new Monticulo(); 
-   LinkedList datos;
+   Usuario[] datos;
    Boolean bp1=true;
+   Integer pasoDeinfo;
     /**
      * Creates new form jMonticulos
      */
@@ -80,6 +80,11 @@ public class InterfazArboles extends javax.swing.JFrame {
         jNombreR = new javax.swing.JLabel();
         jTelefonoR = new javax.swing.JLabel();
         jClaveR = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btPreorden = new javax.swing.JButton();
+        btPostOrden = new javax.swing.JButton();
+        btEnOrden = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -481,6 +486,31 @@ public class InterfazArboles extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        btPreorden.setText("PreOrden");
+        btPreorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPreordenActionPerformed(evt);
+            }
+        });
+
+        btPostOrden.setText("PostOrden");
+        btPostOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPostOrdenActionPerformed(evt);
+            }
+        });
+
+        btEnOrden.setText("EnOrden");
+        btEnOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEnOrdenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -519,7 +549,7 @@ public class InterfazArboles extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(121, 121, 121)
+                                                .addGap(356, 356, 356)
                                                 .addComponent(jNodo1))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(57, 57, 57)
@@ -569,7 +599,7 @@ public class InterfazArboles extends javax.swing.JFrame {
                                                         .addGap(0, 0, Short.MAX_VALUE)))))
                                         .addGap(7, 7, 7)
                                         .addComponent(jNodo29)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(jNodo14)
@@ -591,7 +621,7 @@ public class InterfazArboles extends javax.swing.JFrame {
                         .addComponent(jClave, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(BtIngresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jNodo24)
@@ -603,7 +633,17 @@ public class InterfazArboles extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jClaveS, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(btPreorden)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btPostOrden)
+                        .addGap(26, 26, 26)
+                        .addComponent(btEnOrden)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(jNodo7)
@@ -633,9 +673,8 @@ public class InterfazArboles extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtEliminar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jClaveS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6))))
+                            .addComponent(jClaveS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -694,11 +733,22 @@ public class InterfazArboles extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTel1)
                     .addComponent(jTelefonoR))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btPreorden)
+                            .addComponent(btPostOrden)
+                            .addComponent(btEnOrden))
+                        .addGap(40, 40, 40)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClaveN)
                     .addComponent(jClaveR))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -754,27 +804,52 @@ public class InterfazArboles extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(null, "Un dato mal ingresado ", "Error", JOptionPane.INFORMATION_MESSAGE); 
           return;
        }
-       try{
+        try{
            Usuario us = new Usuario(clave,nombre);
            arbol.insertar(us);
            datos =arbol.Info();
+           this.pasoDeinfo=arbol.getL();
            if (datos!=null) {
-               repaint();
+               
+               for (int i = 0; i < arbol.getL(); i++) {
+                   this.listaLabels[datos[i].getClaveAux()].setText(String.valueOf(datos[i].getClave()));
+                   this.listaLabels[datos[i].getClaveAux()].setVisible(true);
+               }
+              repaint();
            }
-       }
-       catch(Exception E){
-           JOptionPane.showMessageDialog(null, "Error al ingresar ", "Error", JOptionPane.INFORMATION_MESSAGE);
-       }
+        }
+        catch(Exception E){
+            JOptionPane.showMessageDialog(null, "Error al ingresar informacion ", "Error", JOptionPane.INFORMATION_MESSAGE); 
+
+        }
+
      
     }//GEN-LAST:event_BtIngresarActionPerformed
     //Metodo para eliminar informacion
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
-
-
+            System.out.println("eliminar");
+            Integer valorEliminar = Integer.valueOf(this.jClaveS.getText());
+            
+            int q=arbol.eliminar(valorEliminar);
+            System.out.println("q:"+q);
+             datos =arbol.Info();
+             System.out.println("L: "+arbol.getL());
+             for (int i = 0; i < this.pasoDeinfo; i++) {
+                   this.listaLabels[datos[i].getClaveAux()].setVisible(false);
+               }
+                this.pasoDeinfo=arbol.getL();
+             for (int i = 0; i < arbol.getL(); i++) {
+                   System.out.println(i);
+                   System.out.println("clave aux: "+datos[i].getClaveAux());
+                   this.listaLabels[datos[i].getClaveAux()].setText(String.valueOf(datos[i].getClave()));
+                   this.listaLabels[datos[i].getClaveAux()].setVisible(true);
+               }
+              repaint();
     }//GEN-LAST:event_BtEliminarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        this.ingresarLabels();
         repaint();
     }//GEN-LAST:event_formWindowOpened
 
@@ -1192,6 +1267,24 @@ public class InterfazArboles extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.limpiar();
     }//GEN-LAST:event_jNodo30MouseExited
+
+    private void btPreordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPreordenActionPerformed
+        // TODO add your handling code here:
+        String r = arbol.recorridoPreorden();
+        this.jTextArea1.setText(r);
+    }//GEN-LAST:event_btPreordenActionPerformed
+
+    private void btPostOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPostOrdenActionPerformed
+        // TODO add your handling code here:
+        String r = arbol.recorridoPostOrden();
+        this.jTextArea1.setText(r);
+    }//GEN-LAST:event_btPostOrdenActionPerformed
+
+    private void btEnOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnOrdenActionPerformed
+        // TODO add your handling code here:
+        String r = arbol.recorridoEnOrden();
+         this.jTextArea1.setText(r);
+    }//GEN-LAST:event_btEnOrdenActionPerformed
     private void limpiar(){
           this.jLabelNomN.setText(" ");
         this.jLabelClaveN.setText(" ");
@@ -1205,54 +1298,61 @@ public class InterfazArboles extends javax.swing.JFrame {
         this.jLabelNomN.setText("Nombre: ");
         this.jLabelClaveN.setText("Clave: ");
         this.jLabelTel1.setText("Telefono: ");
-        this.jClaveR.setText(String.valueOf(this.mont.getClaveUsuario(nodo)));
-        this.jNombreR.setText(this.mont.getNombreUsuario(nodo));
-        this.jTelefonoR.setText(this.mont.getTelefonoUsuario(nodo));
+        for (int i = 0; i < this.arbol.getL(); i++) {
+            if (nodo==this.datos[i].getClaveAux()) {
+                this.jClaveR.setText(String.valueOf(this.datos[i].getClave()));
+                this.jNombreR.setText(this.datos[i].getNombre());
+                break;
+            }
+        }
     }
     @Override
     public void paint(Graphics g)
      {
         super.paint(g);
+        System.out.println("paint");
         int x,y,width,height,x1,y1,padre,b;
         width=30;
         height=30;
         if (bp1) {
             System.out.println("bp1");
+            System.out.println(String.valueOf(this.listaLabels.length));
             x= this.listaLabels[0].getX()-7;
             y=this.listaLabels[0].getY()+15;
             g.drawArc(x, y, width, height, 0, 360);
             this.bp1=false;
         }
         else{
-            if (bp2) {
+           
                 //Dbujar arcos
                 System.out.println("bp2");
-                for (int i = 0; i < this.mont.getSize()+1; i++) {
-                    x= this.listaLabels[i].getX()-7;
-                    y=this.listaLabels[i].getY()+15;
+                for (int i = 0; i < this.arbol.getL(); i++) {
+                    System.out.println("i: "+String.valueOf(i));
+                    x= this.listaLabels[this.datos[i].getClaveAux()].getX()-7;
+                    y=this.listaLabels[this.datos[i].getClaveAux()].getY()+15;
 
                     g.drawArc(x, y, width, height, 0, 360);
                 
                 //Dibujar lineas
-                    padre = this.mont.Padre(i);
+                    padre = this.mont.Padre(this.datos[i].getClaveAux());
                     if (padre>=0) {
                         x=this.listaLabels[padre].getX()+10;
                         y=this.listaLabels[padre].getY()+45;
                     }
-                        b=i%2;
+                        b=this.datos[i].getClaveAux()%2;
                         System.out.println("b: "+String.valueOf(b));
                     if (b==0) {
-                        x1=this.listaLabels[i].getX()-8;
-                        y1=this.listaLabels[i].getY()+30;
+                        x1=this.listaLabels[this.datos[i].getClaveAux()].getX()-8;
+                        y1=this.listaLabels[this.datos[i].getClaveAux()].getY()+30;
                         g.drawLine(x, y, x1, y1);
                     }
                     else{
-                         x1=this.listaLabels[i].getX()+20;
-                        y1=this.listaLabels[i].getY()+30;
+                         x1=this.listaLabels[this.datos[i].getClaveAux()].getX()+20;
+                        y1=this.listaLabels[this.datos[i].getClaveAux()].getY()+30;
                         g.drawLine(x, y, x1, y1);
                     }
 
-                }
+                
             }
         }          
     }
@@ -1271,13 +1371,13 @@ public class InterfazArboles extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jMonticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazArboles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jMonticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazArboles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jMonticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazArboles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jMonticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazArboles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1291,6 +1391,9 @@ public class InterfazArboles extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtEliminar;
     private javax.swing.JButton BtIngresar;
+    private javax.swing.JButton btEnOrden;
+    private javax.swing.JButton btPostOrden;
+    private javax.swing.JButton btPreorden;
     private javax.swing.JTextField jClave;
     private javax.swing.JLabel jClaveR;
     private javax.swing.JTextField jClaveS;
@@ -1333,6 +1436,8 @@ public class InterfazArboles extends javax.swing.JFrame {
     private javax.swing.JLabel jNodo9;
     private javax.swing.JTextField jNombre;
     private javax.swing.JLabel jNombreR;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jTelefonoR;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,7 @@ public class Nodo {
     public Nodo(Usuario dato, Nodo padre) {
         this.dato = dato;
         this.nodoPadre =padre;
-        this.nodoHIjoDer= null;
+        this.nodoHijoIzq= null;
         this.nodoHIjoDer=null;
     }
 
@@ -52,5 +52,85 @@ public class Nodo {
     public void setNodoHIjoDer(Nodo nodoHIjoDer) {
         this.nodoHIjoDer = nodoHIjoDer;
     }   
-    
+    //eliminar nodo
+    public int eliminar(int valoreliminar){
+        int a = 0;
+        if(dato.getClave() == valoreliminar) {
+               return dato.getClave();
+                        }
+        else{
+          if (valoreliminar<dato.getClave()) {
+              if (this.nodoHijoIzq!=null) {
+                   a= this.nodoHijoIzq.eliminar(valoreliminar);
+                   if (a==this.nodoHijoIzq.dato.getClave()) {
+                      this.nodoHijoIzq=null;
+                  }
+              }
+        }
+            else if(valoreliminar>dato.getClave()) {
+            if (this.nodoHIjoDer!=null) {
+                    a= this.nodoHIjoDer.eliminar(valoreliminar);
+                    if (a==this.nodoHIjoDer.dato.getClave()) {
+                        this.nodoHIjoDer=null;
+                }
+                }
+
+        }
+          else
+            {
+                if (this.nodoHIjoDer!=null) {
+                    Usuario A=this.nodoHIjoDer.ramaizq();
+                    if (A.getClave()== this.nodoHIjoDer.dato.getClave()) {
+                        this.dato.setClave(A.getClave());
+                        this.nodoHIjoDer=this.nodoHIjoDer.getNodoHIjoDer();
+                    }
+                    else{
+                        this.dato.setClave(A.getClave());
+                    }
+                }
+                else {
+                    if (this.nodoHijoIzq!= null) {
+                        Usuario A=this.nodoHijoIzq.ramaDer();
+                        if (A.getClave()== this.nodoHijoIzq.dato.getClave()) {
+                            this.dato.setClave(A.getClave());
+                            this.dato.setNombre(A.getNombre());
+                            this.nodoHijoIzq=this.nodoHijoIzq.getNodoHijoIzq();
+                        }
+                        else{
+                            this.dato.setClave(A.getClave());
+                            this.dato.setNombre(A.getNombre());
+                        }
+                    }
+                    else{
+                        
+                            return -1;
+                    }
+                }
+                }
+            }
+        return a;
+    }
+    //Hallar rama Derecho 
+     public Usuario ramaDer(){
+         if (this.nodoHIjoDer!=null ) {
+             Usuario h = this.nodoHIjoDer.ramaDer();
+             if (h.getClave()==this.nodoHIjoDer.dato.getClave()) {
+                 this.nodoHIjoDer=null;
+             }
+            return h;
+        }
+            Usuario aux= this.dato;
+
+            return aux;
+    }
+      public Usuario ramaizq(){
+        if (this.nodoHijoIzq!=null) {
+            Usuario h= this.nodoHijoIzq.ramaizq();
+             if (h.getClave()==this.nodoHijoIzq.dato.getClave()) {
+                 this.nodoHijoIzq=null;
+             }
+        }
+            Usuario aux= dato;
+            return aux;
+    }
 }
